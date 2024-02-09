@@ -17,12 +17,14 @@ def calculate_probabilities(counts, do_print=True):
     probabilities = {val: count / total for val, count in counts.items()}
 
     if do_print:
-        print('\nValue | Probability | Count')
-        print('------|-------------|---------')
+        analytical_prob = {2: 1 / 36, 3: 2 / 36, 4: 3 / 36, 5: 4 / 36, 6: 5 / 36, 7: 6 / 36, 8: 5 / 36, 9: 4 / 36, 10: 3 / 36, 11: 2 / 36, 12: 1 / 36}
+        print()
+        print('Value | Count       | Probab MC   | Probab AN   ')
+        print('------|-------------|-------------|-------------')
 
-        for i in range(1, 12):
+        for i in range(1, 12+1):
             if i in probabilities:
-                print(f"{i:^6}| {probabilities[i]:<12.5f}| {counts[i]}")
+                print(f"{i:^6}| {counts[i]:<12}| {probabilities[i]:<12.5f}| {analytical_prob[i]:.5f}")
 
     return probabilities
 
